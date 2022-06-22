@@ -44,6 +44,9 @@ public class Principal {
             atualizarTabuleiro();
             verificarVencedor();
 
+            if(fim){
+                System.out.println("O jogador "+(jogadorX ? "X" : "O") + " venceu a partida!!!");
+            }
             jogadorX = !jogadorX;
 
         } while (!fim);
@@ -57,7 +60,7 @@ public class Principal {
                 (tabuleiro[1][0] == "X" && tabuleiro[1][1] == "X" && tabuleiro[1][2] == "X") ||
                 (tabuleiro[2][0] == "X" && tabuleiro[2][1] == "X" && tabuleiro[2][2] == "X") ||
                 (tabuleiro[0][0] == "X" && tabuleiro[1][1] == "X" && tabuleiro[2][2] == "X") ||   //verificar diagonal
-                (tabuleiro[2][0] == "X" && tabuleiro[1][1] == "X" && tabuleiro[1][2] == "X")) {   //verificar diagonal
+                (tabuleiro[2][0] == "X" && tabuleiro[1][1] == "X" && tabuleiro[0][2] == "X")) {   //verificar diagonal
             fim = true;
         }
 
@@ -68,7 +71,7 @@ public class Principal {
                 (tabuleiro[1][0] == "O" && tabuleiro[1][1] == "O" && tabuleiro[1][2] == "O") ||
                 (tabuleiro[2][0] == "O" && tabuleiro[2][1] == "O" && tabuleiro[2][2] == "O") ||
                 (tabuleiro[0][0] == "O" && tabuleiro[1][1] == "O" && tabuleiro[2][2] == "O") ||   //verificar diagonal
-                (tabuleiro[2][0] == "O" && tabuleiro[1][1] == "O" && tabuleiro[1][2] == "O")) {   //verificar diagonal
+                (tabuleiro[2][0] == "O" && tabuleiro[1][1] == "O" && tabuleiro[0][2] == "O")) {   //verificar diagonal
             fim = true;
         }
 
