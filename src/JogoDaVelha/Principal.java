@@ -5,6 +5,7 @@
                 1 vai pedir a vez do jogador x ou 0 ; 2 pedir a posição e amarzenar;
                 3 atualizar campo 4 verifica se o jogo acabou  , 5 inverter as ordens do jogador
                 6 vai fazer tudo isso enquanto fim for falso
+     4 Imprimir a posição das pecas no tabuleiro
  */
 
 
@@ -37,53 +38,61 @@ public class Principal {
         do {
             System.out.println("E a vez do jogador: " + (jogadorX ? "X" : "O")); //? ternario jogador x é verdadeiro sim X não 0.
             proxPos();
+            //etapa 4
+            tabuleiro[linha - 1][coluna - 1] = (jogadorX ? "X" : "O");
+            atualizarTabuleiro();
+
+
+            jogadorX = !jogadorX;
+
         } while (!fim);
     }
 
-    public void proxPos() {
-        int l, c;        //linha e coluna
-        boolean verificacaoL = false;
-        boolean verificacaoC = false;
 
-        do {
-            System.out.println("Digite a linha do jogador: " + (jogadorX ? "X" : "O"));
-            l = sc.nextInt();
-            if (l < 4 && l > 0) {
-                linha = l;
-                verificacaoL = true;  //se digitou valor de 1 a 3 pode escolher a coluna
-            }
-        } while (!verificacaoL);
-
-
-        do {
-            System.out.println("Digite a coluna do jogador: " + (jogadorX ? "X" : "O"));
-            c = sc.nextInt();
-            if (c < 4 && c > 0) {
-                linha = c;
-                verificacaoC = true;  //se digitou valor de 1 a 3 pode escolher a coluna
-            }
-        } while (!verificacaoC);
-    }
-
-
-    public void atualizarTabuleiro() {
-        for (int i = 0; i < tabuleiro.length; i++) {
-            for (int j = 0; j < tabuleiro[i].length; j++) {
-                System.out.print(tabuleiro[i][j]);
-                if (j < 2) {
-                    System.out.print(" | ");
-                }
-            }
-            System.out.println();
-        }
-    }
-
-    public void inicializarTabuleiro() {
+    public void inicializarTabuleiro () {
         for (int i = 0; i < tabuleiro.length; i++) {
             for (int j = 0; j < tabuleiro[i].length; j++) {  //cada elemento dentro de cada linha.
                 tabuleiro[i][j] = "_";
             }
         }
     }
-}
+        public void atualizarTabuleiro () {
+            for (int i = 0; i < tabuleiro.length; i++) {
+                for (int j = 0; j < tabuleiro[i].length; j++) {
+                    System.out.print(tabuleiro[i][j]);
+                    if (j < 2) {
+                        System.out.print(" | ");
+                    }
+                }
+                System.out.println();
+            }
+        }
+
+
+
+        public void proxPos () {
+            int l, c;        //linha e coluna
+            boolean verificacaoL = false;
+            boolean verificacaoC = false;
+
+            do {
+                System.out.println("Digite a linha do jogador: " + (jogadorX ? "X" : "O"));
+                l = sc.nextInt();
+                if (l < 4 && l > 0) {
+                    linha = l;
+                    verificacaoL = true;  //se digitou valor de 1 a 3 pode escolher a coluna
+                }
+            } while (!verificacaoL);
+
+
+            do {
+                System.out.println("Digite a coluna do jogador: " + (jogadorX ? "X" : "O"));
+                c = sc.nextInt();
+                if (c < 4 && c > 0) {
+                    coluna = c;
+                    verificacaoC = true;  //se digitou valor de 1 a 3 pode escolher a coluna
+                }
+            } while (!verificacaoC);
+        }
+    }
 
